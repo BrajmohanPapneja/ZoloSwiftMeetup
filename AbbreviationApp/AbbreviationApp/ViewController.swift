@@ -30,4 +30,4 @@ class ViewController: UIViewController {
  
 
 }
-//curl -X POST http://localhost:8080/acronyms -H 'content-type: application/json' -d '{"short": "AI", "long": "Artifical Intelligence"}'
+

@@ -36,14 +36,14 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "DC1A69DA-8588-4A03-8A60-23C98FB3137A - 53981c710c772e86"
+                  uuid = "DC1A69DA-8588-4A03-8A60-23C98FB3137A - b71db4dc237738b3"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "AbbreviationApp.ListAcronymViewController.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
                   moduleName = "AbbreviationApp"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/bpapn/Desktop/AbbreviationApp/AbbreviationApp/ListAcronymViewController.swift"
+                  urlString = "file:///Users/bpapn/Documents/ZoloSwiftMeetup/AbbreviationApp/AbbreviationApp/ListAcronymViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "24"
@@ -51,14 +51,14 @@
                   offsetFromSymbolStart = "263">
                </Location>
                <Location
-                  uuid = "DC1A69DA-8588-4A03-8A60-23C98FB3137A - 53981c710c772e86"
+                  uuid = "DC1A69DA-8588-4A03-8A60-23C98FB3137A - b71db4dc237738b3"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "AbbreviationApp.ListAcronymViewController.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
                   moduleName = "AbbreviationApp"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/bpapn/Desktop/AbbreviationApp/AbbreviationApp/ListAcronymViewController.swift"
+                  urlString = "file:///Users/bpapn/Documents/ZoloSwiftMeetup/AbbreviationApp/AbbreviationApp/ListAcronymViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "24"
@@ -66,6 +66,38 @@
                   offsetFromSymbolStart = "1697">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "51DAF087-0A27-48CF-82B8-7C24B21666B9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AbbreviationApp/AddAcronymViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "addNewAcronym()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6D877176-69E7-4AFF-91FE-62D202DE6FCD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AbbreviationApp/AddAcronymViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "addNewAcronym()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -152,11 +152,19 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Timer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sxj-sY-PHA">
+                                <rect key="frame" x="83" y="79" width="44" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="SvH-0G-9eK"/>
                     </view>
                     <connections>
+                        <outlet property="lblTimer" destination="sxj-sY-PHA" id="iNe-Of-TFz"/>
                         <outlet property="searchResult" destination="R66-c9-DHu" id="N4y-Ls-UOj"/>
                         <outlet property="searchTextField" destination="pb0-Bx-mNd" id="OEr-qu-EZq"/>
                     </connections>

@@ -20,21 +20,36 @@ class AddAcronymViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-    
+   //curl -X POST http://localhost:8080/acronyms -H 'content-type: application/json' -d '{"short": "AI", "long": "Artifical Intelligence"}'
    @IBAction func addNewAcronym () {
-    
-    
-    
+    let url = String(format: "http://localhost:8080/acronyms")
+    guard let serviceUrl = URL(string: url) else { return }
+    let parameterDictionary = ["short" : "HO", "long" : "Home Office"]
+    var request = URLRequest(url: serviceUrl)
+    request.httpMethod = "POST"
+    request.setValue("Application/json", forHTTPHeaderField: "Content-Type")
+    guard let httpBody = try? JSONSerialization.data(withJSONObject: parameterDictionary, options: []) else {
+        return
     }
-
+    request.httpBody = httpBody
+    
+    let session = URLSession.shared
+    session.dataTask(with: request) { (data, response, error) in
+        if let response = response {
+            print("response = \(response)")
+        }
+        if let data = data {
+            do {
+                let json = try JSONSerialization.jsonObject(with: data, options: [])
+                print("json = \(json)")
+            } catch {
+                print(error)
+            }
+        }
+        }.resume()
+    }
+    
+    
 }
+
+
