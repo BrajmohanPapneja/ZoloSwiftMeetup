@@ -16,6 +16,8 @@
 		B7FFFF63230E6F9000B5243C /* ListAcronymViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FFFF62230E6F9000B5243C /* ListAcronymViewController.swift */; };
 		B7FFFF67230E78D000B5243C /* AcronymServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FFFF66230E78D000B5243C /* AcronymServices.swift */; };
 		B7FFFF6B230E8F7800B5243C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FFFF6A230E8F7800B5243C /* GameViewController.swift */; };
+		B7FFFF6F230EF09300B5243C /* wrong.png in Resources */ = {isa = PBXBuildFile; fileRef = B7FFFF6E230EF09300B5243C /* wrong.png */; };
+		B7FFFF71230EF68C00B5243C /* correct.png in Resources */ = {isa = PBXBuildFile; fileRef = B7FFFF70230EF68C00B5243C /* correct.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		B7FFFF62230E6F9000B5243C /* ListAcronymViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAcronymViewController.swift; sourceTree = "<group>"; };
 		B7FFFF66230E78D000B5243C /* AcronymServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcronymServices.swift; sourceTree = "<group>"; };
 		B7FFFF6A230E8F7800B5243C /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		B7FFFF6E230EF09300B5243C /* wrong.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wrong.png; sourceTree = "<group>"; };
+		B7FFFF70230EF68C00B5243C /* correct.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = correct.png; path = ../../../../Desktop/correct.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +76,8 @@
 				B73961DB22FA8E610089260E /* Assets.xcassets */,
 				B73961DD22FA8E610089260E /* LaunchScreen.storyboard */,
 				B73961E022FA8E610089260E /* Info.plist */,
+				B7FFFF70230EF68C00B5243C /* correct.png */,
+				B7FFFF6E230EF09300B5243C /* wrong.png */,
 			);
 			path = AbbreviationApp;
 			sourceTree = "<group>";
@@ -134,6 +140,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7FFFF6F230EF09300B5243C /* wrong.png in Resources */,
+				B7FFFF71230EF68C00B5243C /* correct.png in Resources */,
 				B73961DF22FA8E610089260E /* LaunchScreen.storyboard in Resources */,
 				B73961DC22FA8E610089260E /* Assets.xcassets in Resources */,
 				B73961DA22FA8E5E0089260E /* Main.storyboard in Resources */,

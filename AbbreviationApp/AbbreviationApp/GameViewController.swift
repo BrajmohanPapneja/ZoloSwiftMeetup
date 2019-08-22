@@ -10,15 +10,23 @@ import UIKit
 
 class GameViewController: UIViewController {
     
-     @IBOutlet weak var lblTimer: UILabel?
-    @IBOutlet weak var searchResult: UILabel?
+    @IBOutlet weak var lblTimer: UILabel?
     @IBOutlet weak var searchTextField: UITextField?
+    @IBOutlet weak var shortAcronym: UILabel?
+    @IBOutlet weak var resultImage : UIImageView?
+    
+    
+    var countAcronyms : Int = 0
+    var responseAcronyms : Array<Any>?
+    var randomGeneratedAcronym : Dictionary<String,String>?
+    var shortForm : String?
+    var longFrom : String?
     
     var timer: Timer?
-    var totalTime = 120
+    var totalTime = 60
     
     private func startTimer() {
-        self.totalTime = 120
+        self.totalTime = 60
         self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
     }
     
@@ -38,76 +46,87 @@ class GameViewController: UIViewController {
     }
     
     func timeFormatted(_ totalSeconds: Int) -> String {
-        let seconds: Int = totalSeconds % 60
-        let minutes: Int = (totalSeconds / 60) % 60
-        return String(format: "%02d:%02d", minutes, seconds)
+        let seconds: Int = totalSeconds
+        return String(format: "%02d", seconds)
     }
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        startTimer()
+        
+        self.navigationItem.title = "Acronym Game"
+        AcronymServices.shared.getAllAcronyms(successBlock: { [weak self] response in
+            print("response=\(String(describing: response))")
+            self?.countAcronyms = (response as! Array<Any>).count as Int
+            self?.responseAcronyms = (response as! Array<Any>)
+            
+            let randomInt:Int = Int.random(in: 1..<(self?.countAcronyms ?? 7))
+            
+            
+            self?.randomGeneratedAcronym = self?.responseAcronyms?[randomInt] as? Dictionary<String,String>
+            self?.shortForm = (self?.randomGeneratedAcronym?["short"] ?? "")
+            self?.longFrom = (self?.randomGeneratedAcronym?["long"] ?? "")
+            
+            
+            
+            DispatchQueue.main.async {
+                self?.shortAcronym?.text =   self?.shortForm
+                self?.startTimer()
+            }
+            
+            
+            
+        }) { error in
+            print("error=\(String(describing: error))")
+        }
+        
+        
+        
         
     }
     
     
     
-    @IBAction func getVal () {
+    @IBAction func checkResult () {
         let text: String = searchTextField?.text! ?? ""
         
         var result = false
-        let session = URLSession.shared
-        let url = URL(string: "http://localhost:8080/acronyms")!
-        
-        let task = session.dataTask(with: url, completionHandler: { data, response, error in
-            
-            // Do something...
-            //print(data)
-            //print(response)
-            //print(error)
-            var json : Any?
-            do {
-                json = try JSONSerialization.jsonObject(with: data!, options: [])
-            } catch {
-                print("JSON error: \(error.localizedDescription)")
-            }
-            
-            for dict in json as! Array<Any>
+        for dict in responseAcronyms!
             {
                 let localDict : Dictionary = dict as! Dictionary<String,String>
                 print(localDict)
                 
                 if let val = localDict["short"] {
                     // now val is not nil and the Optional has been unwrapped, so use it
-                    if val == text{
+                    if let short = self.shortForm, let long = self.longFrom {
+                        if (val.caseInsensitiveCompare(short) == ComparisonResult.orderedSame) && (text.caseInsensitiveCompare(long) == ComparisonResult.orderedSame) {
                         DispatchQueue.main.async {
                             result = true
-                            self.searchResult?.text = localDict["long"]
+                            self.resultImage?.image = UIImage(named: "correct")
+                            
                         }
                         
                     }
                 }
                 
-                
-                
-                
             }
+        }
             
             DispatchQueue.main.async {
                 if result == false
                 {
-                    self.searchResult?.text = "not present"
+                    self.resultImage?.image = UIImage(named: "wrong")
+                    
                 }
             }
             
             
             
-        })
+      
         
         
-        task.resume()
-        
+    
         
         
         

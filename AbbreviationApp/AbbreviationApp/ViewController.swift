@@ -28,6 +28,13 @@ class ViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
  
+    
+      @IBAction func displayGameInfoVersion () {
+        
+        print("Version 2.2");
+        
+        
+    }
 
 }
 
