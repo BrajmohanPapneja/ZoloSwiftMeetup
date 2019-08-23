@@ -13,6 +13,8 @@ class ListAcronymViewController: UIViewController,UITableViewDelegate,UITableVie
     @IBOutlet weak var acronymsTableView: UITableView!
     var countAcronyms : Int = 0
     var responseAcronyms : Array<Any>?
+    var cellShortText : String! = ""
+    var cellLongText : String! = ""
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return countAcronyms
@@ -22,7 +24,10 @@ class ListAcronymViewController: UIViewController,UITableViewDelegate,UITableVie
         let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "cell")
         
         let localDict : Dictionary = responseAcronyms?[indexPath.row] as! Dictionary<String,String>
-        cell.textLabel?.text = (localDict["short"] ?? "") + " : " + (localDict["short"] ?? "")
+        
+        cellShortText  = localDict["short"]
+        cellLongText  = localDict["long"]
+        cell.textLabel?.text = cellShortText + " : " + cellLongText
 
         return cell
         
@@ -36,7 +41,7 @@ class ListAcronymViewController: UIViewController,UITableViewDelegate,UITableVie
         
         // Do any additional setup after loading the view.
         self.acronymsTableView.delegate=self
-        self.acronymsTableView.dataSource=self
+        self.acronymsTableView.dataSource = self
         
         
         AcronymServices.shared.getAllAcronyms(successBlock: { [weak self] response in
