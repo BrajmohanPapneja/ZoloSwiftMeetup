@@ -20,13 +20,12 @@ class GameViewController: UIViewController {
     @IBOutlet weak var resultLabel : UILabel!
     @IBOutlet weak var scoreLabel :UILabel!
     @IBOutlet weak var attemptsLabel: UILabel!
+    
     @IBOutlet weak var nextButton : UIButton!
     
-    
     @IBOutlet weak var resultImage : UIImageView!
+    
     @IBOutlet weak var acronymTextField: UITextField!
-    
-    
     
     var countAcronyms : Int = 0
     var score : Int = 0
@@ -46,15 +45,9 @@ class GameViewController: UIViewController {
         self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
     }
     
-    fileprivate func gameOver(reason: String) {
-        if let timer = self.timer {
-            timer.invalidate()
-            self.timer = nil
-            let alert = UIAlertController(title: "Game Over: \(reason)", message: "It's recommended you go through the acronym list.", preferredStyle: .alert)
-            
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            self.present(alert, animated: true)
-        }
+    func stopTimer(){
+        self.timer?.invalidate()
+        self.timer = nil
     }
     
     @objc func updateTimer() {
@@ -73,6 +66,19 @@ class GameViewController: UIViewController {
         let seconds: Int = totalSeconds
         return String(format: "%02d", seconds)
     }
+    
+    fileprivate func gameOver(reason: String) {
+        if let timer = self.timer {
+            timer.invalidate()
+            self.timer = nil
+            let alert = UIAlertController(title: "Game Over: \(reason)", message: "It's recommended you go through the acronym list.", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }
+    }
+    
+   
 
     
     fileprivate func resetResultDisplay() {
@@ -104,7 +110,7 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        self.navigationItem.title = "Acronym Game"
+        self.navigationItem.title = "Play Acronym Game"
         AcronymServices.shared.getAllAcronyms(successBlock: { [weak self] response in
             print("response=\(String(describing: response))")
             
@@ -119,19 +125,10 @@ class GameViewController: UIViewController {
         }) { error in
             print("error=\(String(describing: error))")
         }
-        
-        
-        
-        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         stopTimer()
-    }
-    
-    func stopTimer(){
-        self.timer?.invalidate()
-        self.timer = nil
     }
     
     
@@ -164,9 +161,7 @@ class GameViewController: UIViewController {
     func updateGameState()
     {
         checkCount += 1
-        if (checkCount > 5){
-           gameState = GamePlay.ended
-        }
+        if(checkCount > 5) {gameState = .ended}
     }
     
     
@@ -228,21 +223,6 @@ class GameViewController: UIViewController {
         setNewGame()
         updateAttempts()
         
-        
-        
     }
-      
-        
-        
-    
-        
-        
-        
-        
-        
-        
-    
-    
-    
-}
+ }
 

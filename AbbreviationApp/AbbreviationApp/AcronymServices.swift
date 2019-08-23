@@ -25,8 +25,14 @@ class AcronymServices: NSObject {
             
            var allAcronyms : Any?
             do {
-                allAcronyms = try JSONSerialization.jsonObject(with: data!, options: [])
+                
+                guard let data = data else {
+                    print("No data to return")
+                    return
+                }
+                allAcronyms = try JSONSerialization.jsonObject(with: data, options: [])
                 successBlock(allAcronyms)
+                
             } catch {
                 failureBlock(error)
                 print("JSON error: \(error.localizedDescription)")

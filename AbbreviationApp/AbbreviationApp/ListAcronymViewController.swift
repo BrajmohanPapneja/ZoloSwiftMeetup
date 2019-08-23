@@ -32,9 +32,12 @@ class ListAcronymViewController: UIViewController,UITableViewDelegate,UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.title = "List Acronyms"
+        
         // Do any additional setup after loading the view.
         self.acronymsTableView.delegate=self
         self.acronymsTableView.dataSource=self
+        
         
         AcronymServices.shared.getAllAcronyms(successBlock: { [weak self] response in
             print("response=\(String(describing: response))")
