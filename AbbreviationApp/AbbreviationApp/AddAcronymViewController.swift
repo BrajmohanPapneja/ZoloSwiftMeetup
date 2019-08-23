@@ -9,8 +9,8 @@
 import UIKit
 
 class AddAcronymViewController: UIViewController {
-    @IBOutlet weak var shortText: UITextField?
-    @IBOutlet weak var longText: UITextField?
+    @IBOutlet weak var shortText: UITextField!
+    @IBOutlet weak var longText: UITextField!
     
     
     override func viewDidLoad() {

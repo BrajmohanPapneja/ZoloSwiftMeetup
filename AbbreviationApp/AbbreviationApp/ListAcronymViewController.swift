@@ -10,7 +10,7 @@ import UIKit
 
 class ListAcronymViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
-    @IBOutlet weak var acronymsTableView: UITableView?
+    @IBOutlet weak var acronymsTableView: UITableView!
     var countAcronyms : Int = 0
     var responseAcronyms : Array<Any>?
 
@@ -33,8 +33,8 @@ class ListAcronymViewController: UIViewController,UITableViewDelegate,UITableVie
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        self.acronymsTableView?.delegate=self
-        self.acronymsTableView?.dataSource=self
+        self.acronymsTableView.delegate=self
+        self.acronymsTableView.dataSource=self
         
         AcronymServices.shared.getAllAcronyms(successBlock: { [weak self] response in
             print("response=\(String(describing: response))")
