@@ -26,7 +26,7 @@ class ListAcronymViewController: UIViewController,UITableViewDelegate,UITableVie
         let localDict : Dictionary = responseAcronyms?[indexPath.row] as! Dictionary<String,String>
         
         cellShortText  = localDict["short"]
-        cellLongText  = localDict["long"]
+        cellLongText  = localDict["short"]
         cell.textLabel?.text = cellShortText + " : " + cellLongText
 
         return cell
@@ -41,7 +41,6 @@ class ListAcronymViewController: UIViewController,UITableViewDelegate,UITableVie
         
         // Do any additional setup after loading the view.
         self.acronymsTableView.delegate=self
-        self.acronymsTableView.dataSource = self
         
         
         AcronymServices.shared.getAllAcronyms(successBlock: { [weak self] response in

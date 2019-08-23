@@ -12,6 +12,7 @@
 		B73961DA22FA8E5E0089260E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B73961D822FA8E5E0089260E /* Main.storyboard */; };
 		B73961DC22FA8E610089260E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B73961DB22FA8E610089260E /* Assets.xcassets */; };
 		B73961DF22FA8E610089260E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B73961DD22FA8E610089260E /* LaunchScreen.storyboard */; };
+		B7476E6C23108D10002BD23C /* HelpFile.rtf in Resources */ = {isa = PBXBuildFile; fileRef = B7476E6B23108D10002BD23C /* HelpFile.rtf */; };
 		B7AFE9CD2310485000D3376B /* Acrofever.png in Resources */ = {isa = PBXBuildFile; fileRef = B7AFE9CC2310485000D3376B /* Acrofever.png */; };
 		B7AFE9CF23104BCB00D3376B /* AddAcronymImage.png in Resources */ = {isa = PBXBuildFile; fileRef = B7AFE9CE23104BCA00D3376B /* AddAcronymImage.png */; };
 		B7AFE9D323104C8A00D3376B /* Play.png in Resources */ = {isa = PBXBuildFile; fileRef = B7AFE9D223104C8900D3376B /* Play.png */; };
@@ -32,6 +33,7 @@
 		B73961DB22FA8E610089260E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B73961DE22FA8E610089260E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B73961E022FA8E610089260E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B7476E6B23108D10002BD23C /* HelpFile.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = HelpFile.rtf; sourceTree = "<group>"; };
 		B7AFE9CC2310485000D3376B /* Acrofever.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Acrofever.png; sourceTree = "<group>"; };
 		B7AFE9CE23104BCA00D3376B /* AddAcronymImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AddAcronymImage.png; sourceTree = "<group>"; };
 		B7AFE9D223104C8900D3376B /* Play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Play.png; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				B73961D422FA8E5E0089260E /* AppDelegate.swift */,
+				B7476E6B23108D10002BD23C /* HelpFile.rtf */,
 				B7FFFF66230E78D000B5243C /* AcronymServices.swift */,
 				B73961D622FA8E5E0089260E /* ViewController.swift */,
 				B7FFFF6A230E8F7800B5243C /* GameViewController.swift */,
@@ -159,6 +162,7 @@
 				B73961DC22FA8E610089260E /* Assets.xcassets in Resources */,
 				B73961DA22FA8E5E0089260E /* Main.storyboard in Resources */,
 				B7AFE9CD2310485000D3376B /* Acrofever.png in Resources */,
+				B7476E6C23108D10002BD23C /* HelpFile.rtf in Resources */,
 				B7AFE9CF23104BCB00D3376B /* AddAcronymImage.png in Resources */,
 				B7AFE9D723104D0000D3376B /* ListAcronym.png in Resources */,
 			);

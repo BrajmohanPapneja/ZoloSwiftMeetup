@@ -160,7 +160,7 @@ class GameViewController: UIViewController {
             
         } else {
             self.resultImage.image = UIImage(named: "wrong")
-            self.resultLabel.text = "wrong"
+            self.resultLabel.text = "correct"
         }
         self.scoreLabel.text = "\(score)"
     }
@@ -205,7 +205,7 @@ class GameViewController: UIViewController {
     }
     
     fileprivate func updateAttempts() {
-        attempts += 1
+        //attempts += 1
         blinkAttemptsLabel()
         self.attemptsLabel.text = "\(attempts)/3"
         if(attempts == 3){
