@@ -49,8 +49,9 @@ class GameViewController: UIViewController {
         AcronymServices.shared.getAllAcronyms(successBlock: { [weak self] response in
             print("response=\(String(describing: response))")
             
-            self?.countAcronyms = (response as! Array<Any>).count as Int
-            self?.responseAcronyms = (response as! Array<Any>)
+            guard let response = response as? Array<Any> else { return }
+            self?.countAcronyms = response.count as Int
+            self?.responseAcronyms = response
             
             self?.setNewGame()
             
@@ -78,7 +79,7 @@ class GameViewController: UIViewController {
     
     @objc func updateTimer() {
         print(self.totalTime)
-        self.lblTimer?.text = self.timeFormatted(self.totalTime) // will show timer
+        self.lblTimer.text = self.timeFormatted(self.totalTime) // will show timer
         
         if totalTime != 0 {
             totalTime -= 1  // decrease counter timer
@@ -107,11 +108,16 @@ class GameViewController: UIViewController {
     fileprivate func setNewGame() {
         resetResultDisplay()
         let randomInt:Int = Int.random(in: 1..<(self.countAcronyms ))
-        self.randomGeneratedAcronym = self.responseAcronyms?[randomInt] as? Dictionary<String,String>
-        self.shortForm = (self.randomGeneratedAcronym?["short"] ?? "")
-        self.longFrom = (self.randomGeneratedAcronym?["long"] ?? "")
+        
+        guard let responseAcronyms = self.responseAcronyms else {return}
+        
+        guard let randomGeneratedAcronym = responseAcronyms[randomInt] as? Dictionary<String,String> else{return}
+        
+        self.shortForm = randomGeneratedAcronym["short"]
+        self.longFrom = randomGeneratedAcronym["long"]
+        
         DispatchQueue.main.async {
-            self.shortAcronym?.text =   self.shortForm
+            self.shortAcronym.text =   self.shortForm
         }
     }
     
@@ -140,7 +146,7 @@ class GameViewController: UIViewController {
             return
         }
         
-        let text: String = acronymTextField?.text! ?? ""
+        let text: String = acronymTextField.text ?? ""
         var result : Bool = false
         result = iterateAllAcronyms(text)
         
@@ -162,9 +168,10 @@ class GameViewController: UIViewController {
     fileprivate func iterateAllAcronyms(_ text: String) -> Bool {
         var result = false
         
-        for dict in responseAcronyms!
+        guard let responseAcronyms = responseAcronyms else {return false}
+        for dict in responseAcronyms
         {
-            let localDict : Dictionary = dict as! Dictionary<String,String>
+            guard let localDict : Dictionary = dict as? Dictionary<String,String> else {break}
             print(localDict)
             
             if let val = localDict["short"] {
