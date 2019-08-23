@@ -40,6 +40,32 @@ class GameViewController: UIViewController {
     var totalTime = 60
     var gameState = GamePlay.inprogress
     
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+        
+        self.navigationItem.title = "Play Acronym Game"
+        AcronymServices.shared.getAllAcronyms(successBlock: { [weak self] response in
+            print("response=\(String(describing: response))")
+            
+            self?.countAcronyms = (response as! Array<Any>).count as Int
+            self?.responseAcronyms = (response as! Array<Any>)
+            
+            self?.setNewGame()
+            
+            DispatchQueue.main.async {
+                self?.startTimer()
+            }
+        }) { error in
+            print("error=\(String(describing: error))")
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        stopTimer()
+    }
+    
     private func startTimer() {
         self.totalTime = 60
         self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
@@ -78,8 +104,22 @@ class GameViewController: UIViewController {
         }
     }
     
-   
-
+    fileprivate func setNewGame() {
+        resetResultDisplay()
+        let randomInt:Int = Int.random(in: 1..<(self.countAcronyms ))
+        self.randomGeneratedAcronym = self.responseAcronyms?[randomInt] as? Dictionary<String,String>
+        self.shortForm = (self.randomGeneratedAcronym?["short"] ?? "")
+        self.longFrom = (self.randomGeneratedAcronym?["long"] ?? "")
+        DispatchQueue.main.async {
+            self.shortAcronym?.text =   self.shortForm
+        }
+    }
+    
+    func updateGameState()
+    {
+        checkCount += 1
+        if(checkCount > 5) {gameState = .ended}
+    }
     
     fileprivate func resetResultDisplay() {
         
@@ -91,46 +131,33 @@ class GameViewController: UIViewController {
         }
     }
     
-    fileprivate func setNewGame() {
-        resetResultDisplay()
+    
+    @IBAction func checkResult () {
+        updateGameState()
         
-        let randomInt:Int = Int.random(in: 1..<(self.countAcronyms ))
-        
-        
-        self.randomGeneratedAcronym = self.responseAcronyms?[randomInt] as? Dictionary<String,String>
-        self.shortForm = (self.randomGeneratedAcronym?["short"] ?? "")
-        self.longFrom = (self.randomGeneratedAcronym?["long"] ?? "")
-        DispatchQueue.main.async {
-            self.shortAcronym?.text =   self.shortForm
+        if (gameState == .ended) {
+            gameOver(reason: "Maximum checks crossed")
+            return
         }
         
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        let text: String = acronymTextField?.text! ?? ""
+        var result : Bool = false
+        result = iterateAllAcronyms(text)
         
-        self.navigationItem.title = "Play Acronym Game"
-        AcronymServices.shared.getAllAcronyms(successBlock: { [weak self] response in
-            print("response=\(String(describing: response))")
+        print("testing")
+        self.resultImage.isHidden = false
+        self.resultLabel.isHidden = false
+        
+        if result {
+            self.resultImage.image = UIImage(named: "correct")
+            self.resultLabel.text = "correct"
             
-            self?.countAcronyms = (response as! Array<Any>).count as Int
-            self?.responseAcronyms = (response as! Array<Any>)
-            
-            self?.setNewGame()
-            
-            DispatchQueue.main.async {
-            self?.startTimer()
-            }
-        }) { error in
-            print("error=\(String(describing: error))")
+        } else {
+            self.resultImage.image = UIImage(named: "wrong")
+            self.resultLabel.text = "wrong"
         }
+        self.scoreLabel.text = "\(score)"
     }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        stopTimer()
-    }
-    
     
     fileprivate func iterateAllAcronyms(_ text: String) -> Bool {
         var result = false
@@ -156,45 +183,6 @@ class GameViewController: UIViewController {
         
         return result
     }
-    
-    
-    func updateGameState()
-    {
-        checkCount += 1
-        if(checkCount > 5) {gameState = .ended}
-    }
-    
-    
-    @IBAction func checkResult () {
-        
-        
-    updateGameState()
-        
-    if (gameState == .ended) {
-            gameOver(reason: "Maximum checks crossed")
-            return
-        }
-        
-        let text: String = acronymTextField?.text! ?? ""
-        
-        var result : Bool = false
-        result = iterateAllAcronyms(text)
-        
-        print("testing")
-        self.resultImage.isHidden = false
-        self.resultLabel.isHidden = false
-        
-                if result {
-                    self.resultImage.image = UIImage(named: "correct")
-                    self.resultLabel.text = "correct"
-                    
-                } else {
-                    self.resultImage.image = UIImage(named: "wrong")
-                    self.resultLabel.text = "wrong"
-                }
-         self.scoreLabel.text = "\(score)"
-        
-            }
             
             
     fileprivate func blinkAttemptsLabel() {
@@ -225,4 +213,3 @@ class GameViewController: UIViewController {
         
     }
  }
-
