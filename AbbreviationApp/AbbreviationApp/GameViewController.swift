@@ -124,7 +124,7 @@ class GameViewController: UIViewController {
     func updateGameState()
     {
         checkCount += 1
-        if(checkCount > 5) {gameState = .ended}
+        //if(checkCount > 5) {gameState = .ended}
     }
     
     fileprivate func resetResultDisplay() {

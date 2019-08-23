@@ -5,7 +5,7 @@
 {\*\expandedcolortbl;;}
 {\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{circle\}}{\leveltext\leveltemplateid1\'01\uc0\u9702 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{circle\}}{\leveltext\leveltemplateid2\'01\uc0\u9702 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{circle\}}{\leveltext\leveltemplateid3\'01\uc0\u9702 ;}{\levelnumbers;}\fi-360\li2160\lin2160 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{hyphen\}}{\leveltext\leveltemplateid4\'01\uc0\u8259 ;}{\levelnumbers;}\fi-360\li2880\lin2880 }{\listname ;}\listid1}
 {\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{circle\}}{\leveltext\leveltemplateid101\'01\uc0\u9702 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{circle\}}{\leveltext\leveltemplateid102\'01\uc0\u9702 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{circle\}}{\leveltext\leveltemplateid103\'01\uc0\u9702 ;}{\levelnumbers;}\fi-360\li2160\lin2160 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{hyphen\}}{\leveltext\leveltemplateid104\'01\uc0\u8259 ;}{\levelnumbers;}\fi-360\li2880\lin2880 }{\listname ;}\listid2}
-{\list\listtemplateid3\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{circle\}}{\leveltext\leveltemplateid201\'01\uc0\u9702 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid3}}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{circle\}}{\leveltext\leveltemplateid201\'01\uc0\u9702 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{hyphen\}}{\leveltext\leveltemplateid202\'01\uc0\u8259 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{hyphen\}}{\leveltext\leveltemplateid203\'01\uc0\u8259 ;}{\levelnumbers;}\fi-360\li2160\lin2160 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{hyphen\}}{\leveltext\leveltemplateid204\'01\uc0\u8259 ;}{\levelnumbers;}\fi-360\li2880\lin2880 }{\listname ;}\listid3}}
 {\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}}
 \margl1440\margr1440\vieww9000\viewh8400\viewkind0
 \deftab560
@@ -56,16 +56,39 @@ Advance Debugging Tips and Tricks\
 \ls3\ilvl0\cf0 {\listtext	
 \f1 \uc0\u9702 
 \f0 	}Maximum 5 checks and then game should end\
-\ls3\ilvl0{\listtext	
+\pard\tx2380\tx2880\pardeftab560\li2880\fi-2880\pardirnatural\partightenfactor0
+\ls3\ilvl3\cf0 {\listtext	\uc0\u8259 	}Add breakpoint where checkCount should get updated.\
+\pard\tx2380\tx2880\pardeftab560\li2880\fi-2880\slleading20\partightenfactor0
+\ls3\ilvl3\cf0 {\listtext	\uc0\u8259 	}Find the checkCount in variable summary window and add Watch point\
+{\listtext	\uc0\u8259 	}expression if(checkCount > 5) \{gameState = .ended\} 
+\f2\b //Debug expression
+\f0\b0 \
+\pard\pardeftab560\pardirnatural\partightenfactor0
+\ls3\ilvl0\cf0 {\listtext	
 \f1 \uc0\u9702 
-\f0 	}Nudge\
-\ls3\ilvl0{\listtext	
+\f0 	}Nudge //Type all in console window one by one\
+\pard\tx2380\tx2880\pardeftab560\li2880\fi-2880\slleading20\partightenfactor0
+\ls3\ilvl3\cf0 {\listtext	\uc0\u8259 	}po self.view \
+{\listtext	\uc0\u8259 	}po self.view.recursiveDescription\
+{\listtext	\uc0\u8259 	}expression -l objc -O --[self.view recursiveDescription]\
+{\listtext	\uc0\u8259 	}expression -l objc -O --[`self.view` recursiveDescription]\
+{\listtext	\uc0\u8259 	}command alias poc  expression -l objc -O --\
+{\listtext	\uc0\u8259 	}poc <address>\
+{\listtext	\uc0\u8259 	}po unsafeBitCast(<address>,to:UIImageView.self)\
+{\listtext	\uc0\u8259 	}po unsafeBitCast(<address>,to:UIImageView.self).frame\
+{\listtext	\uc0\u8259 	}po unsafeBitCast(<address>,to:UIImageView.self).center\
+{\listtext	\uc0\u8259 	}po unsafeBitCast(<address>,to:UIImageView.self).center.y\
+{\listtext	\uc0\u8259 	}expression CATransaction.flush()\
+\pard\tx2380\tx2880\pardeftab560\li2880\fi-2880\slleading20\partightenfactor0
+\ls3\ilvl3\cf0 {\listtext	\uc0\u8259 	}nudge 0 -5 <address> \
+\pard\pardeftab560\pardirnatural\partightenfactor0
+\ls3\ilvl0\cf0 {\listtext	
 \f1 \uc0\u9702 
 \f0 	}Facebook Chisel\
-\ls3\ilvl0{\listtext	
+{\listtext	
 \f1 \uc0\u9702 
 \f0 	}thread jump --by 1\
-\ls3\ilvl0{\listtext	
+{\listtext	
 \f1 \uc0\u9702 
 \f0 	}po, p & v\
 }
