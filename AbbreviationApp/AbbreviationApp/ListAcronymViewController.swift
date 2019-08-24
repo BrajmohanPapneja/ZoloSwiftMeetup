@@ -41,7 +41,7 @@ class ListAcronymViewController: UIViewController,UITableViewDelegate,UITableVie
         
         // Do any additional setup after loading the view.
         self.acronymsTableView.delegate=self
-        
+        self.acronymsTableView.dataSource = self
         
         AcronymServices.shared.getAllAcronyms(successBlock: { [weak self] response in
             print("response=\(String(describing: response))")
