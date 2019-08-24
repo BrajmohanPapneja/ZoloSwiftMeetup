@@ -9,11 +9,12 @@
 import Foundation
 
 print("Hello, World!")
-struct Trip {
+protocol Activity {}
+struct Trip :Activity{
     var name: String
     var destinations: [String]
 }
-let cruise  = Trip(
+let cruise : Activity  = Trip(
     name: "Mediterranean Cruise",
     destinations: ["Sorrento", "Capri", "Taormina"])
 

@@ -124,7 +124,7 @@ class GameViewController: UIViewController {
     func updateGameState()
     {
         checkCount += 1
-        //if(checkCount > 5) {gameState = .ended}
+        if(checkCount > 5) {gameState = .ended}
     }
     
     fileprivate func resetResultDisplay() {
@@ -205,7 +205,7 @@ class GameViewController: UIViewController {
     }
     
     fileprivate func updateAttempts() {
-        //attempts += 1
+        attempts += 1
         blinkAttemptsLabel()
         self.attemptsLabel.text = "\(attempts)/3"
         if(attempts == 3){
